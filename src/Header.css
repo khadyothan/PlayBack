@@ -13,6 +13,7 @@
     margin-left: 2px;
     margin-right: 4px;
     margin-bottom: 4px;
+    border-radius: 50%;
 }
 
 .header__nav{
@@ -50,6 +51,7 @@
     font-size: 14px;
     font-weight: bold;
     font-family: cursive;
+    text-decoration: none;
 }
 
 .header__search{

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./MovieList.css";
+import "./SearchResult.css";
 import { useState,useEffect } from 'react';
 
 function SearchResult({searchValue}) {
@@ -20,7 +20,7 @@ function SearchResult({searchValue}) {
 
     console.log(movies);
     return (
-        <div className="row">
+        <div className="search__list">
             <div className="row__posters">
                 {movies.map(movie => (
                     <>

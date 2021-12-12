@@ -14,7 +14,8 @@
     font-size: 3rem;
     font-weight: 800;
     padding-bottom: 0.3rem;
-    color: whitesmoke;
+    color: rgba(245, 245, 245, 0.904);
+    text-shadow: 2px 2px #000000dc;
 }
 
 .banner_desc{
@@ -23,7 +24,8 @@
     padding-top: 1rem;
     font-size: 0.8rem;
     max-width: 360px;
-    height: 80px
+    height: 80px;
+    text-shadow: 2px 2px #000000dc;
 }
 
 .banner_button{

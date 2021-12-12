@@ -1,10 +1,4 @@
 
-.row{
-    margin-left: 20px;
-    color: whitesmoke;
-    margin-top: 5px;
-}
-
 .row__posters{
     display: flex;
     overflow-y: hidden;
@@ -21,8 +15,8 @@
 }
 
 .row__poster:hover{
-    transform: scale3d(-1.4, 0.4, 0.7);
-    transform: scale(1.1);
+    transform: scale3d(-1.4, 1, 1);
+    /* transform: scale(1.1); */
 }
 
 .row__posters::-webkit-scrollbar{
