@@ -7,9 +7,40 @@ import requests from './requests'
 import Banner from './Banner'	
 import {useState} from 'react'
 import SearchResult from './SearchResult'
+import Login from './Login'
+import { useEffect } from 'react'
+import { useStateValue } from './StateProvider'
+import { auth } from './firebase'
 
 function App() {
+  
+	const [{ basket }, dispatch] = useStateValue();
+
     const [searchValue, setSearchValue] = useState('');
+
+    useEffect(() => {
+      // will only run once when the app component loads...
+  
+      auth.onAuthStateChanged((authUser) => {
+        console.log("THE USER IS >>> ", authUser);
+  
+        if (authUser) {
+          // the user just logged in / the user was logged in
+  
+          dispatch({
+            type: "SET_USER",
+            user: authUser,
+          });
+        } else {
+          // the user is logged out
+          dispatch({
+            type: "SET_USER",
+            user: null,
+          });
+        }
+      });
+    }, []);
+
 	return (
 		<Router className="App">
 			<div className="App">	
@@ -19,7 +50,7 @@ function App() {
 						<h1>Your Favourites</h1>
 					</Route>
 					<Route path = "/Login">
-						<h1>Login</h1>
+						<Login></Login>
 					</Route>
 					<Route path = "/">	
 						{searchValue ? 
