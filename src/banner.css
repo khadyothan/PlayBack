@@ -44,7 +44,7 @@
 }
 
 .banner_button:hover{
-    background-color: rgb(189, 180, 180);
+    background-color: rgb(230, 228, 228);
     color: black;
     transition: all 1.2s
 }

@@ -21,7 +21,7 @@
 }
 
 .row__poster:hover{
-    transform: scale3d(-1.4, 0.4, 0.7);
+    /* transform: scale3d(-1.4, 0.4, 0.7); */
     transform: scale(1.1);
 }
 

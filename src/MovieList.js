@@ -1,8 +1,8 @@
-import Search from '@mui/icons-material/Search';
 import React from 'react'
 import {useState,useEffect} from 'react'
 import axios from './axios';
 import "./MovieList.css";
+import {bad_words} from './badwords';
 
 function MovieList({title,fetchUrl}) {
     const [movies,setMovies] = useState([]);
@@ -10,22 +10,31 @@ function MovieList({title,fetchUrl}) {
     useEffect(() => {
         async function fetchData() {
             const request = await axios.get(fetchUrl);
-            setMovies(request.data.results);
+            console.log(request.data.results)
+            setMovies((request.data.results).filter(movie => {
+                for (let word of bad_words) {
+                    if (movie.title?.toLowerCase().includes(word) || movie.original_title?.toLowerCase().includes(word)) return false;
+                }
+                return true
+            } ));
             return request;
         }
         fetchData();
     },[fetchUrl])
+
+    
 
     return (
         <div className="row">
             <h2>{title}</h2>
             <div className="row__posters">
                 {movies.map(movie => (
-                    <img className="row__poster"
-                        key={movie.id}
-                        src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                        alt={movie.original_title}
-                    />
+                        <img className="row__poster"
+                            key={movie.id}
+                            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                            alt={movie.original_title}
+                            onClick={() => {}}
+                        />
                 ))}
             </div>
         </div>

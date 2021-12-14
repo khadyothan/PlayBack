@@ -24,7 +24,7 @@ function SearchResult({searchValue}) {
             <div className="row__posters">
                 {movies.map(movie => (
                     <>
-                        {movie.Poster!="N/A"? 
+                        {movie.Poster!=="N/A"? 
                             <img className="row__poster"
                                 src={movie.Poster}
                             /> : 

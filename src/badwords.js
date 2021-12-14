@@ -1,0 +1,1 @@
+export const bad_words = ["porn", "donde", "XXX"]

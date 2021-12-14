@@ -44,7 +44,6 @@ function App() {
 	return (
 		<Router className="App">
 			<div className="App">	
-				<Header searchValue={searchValue} setSearchValue={setSearchValue}/>
 				<Switch>
 					<Route path = "/Favourites">
 						<h1>Your Favourites</h1>
@@ -53,6 +52,7 @@ function App() {
 						<Login></Login>
 					</Route>
 					<Route path = "/">	
+						<Header searchValue={searchValue} setSearchValue={setSearchValue}/>
 						{searchValue ? 
 							<SearchResult searchValue = {searchValue}/> :
 							<>
