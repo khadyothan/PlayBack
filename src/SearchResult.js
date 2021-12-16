@@ -1,5 +1,6 @@
 import React from 'react'
 import "./SearchResult.css";
+import {Link} from 'react-router-dom';
 import { useState,useEffect } from 'react';
 
 function SearchResult({searchValue}) {
@@ -25,9 +26,12 @@ function SearchResult({searchValue}) {
                 {movies.map(movie => (
                     <>
                         {movie.Poster!=="N/A"? 
-                            <img className="row__poster"
-                                src={movie.Poster}
-                            /> : 
+                            <Link to={`/movie/${movie.imdbID}`} className='row__poster'>
+                                <img className="row__poster"
+                                    src={movie.Poster}
+                                />
+                            </Link>
+                                : 
                         null}
                     </>
                 ))}

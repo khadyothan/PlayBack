@@ -22,12 +22,21 @@ export default function PostReview() {
         window.location = '/movie/' + movieId;
     }
       return (
-    <div className="postReview">
-        <form method="POST" onSubmit={addReview}>
-            <label className="Review">Write Review: </label><br />
-            <textarea name="review" rows={20} cols={100}> </textarea><br />
-            <input type="submit" value="Submit"></input>
-        </form>
-    </div>
+        <div className="container">
+            <form method="POST" onSubmit={addReview}>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="subject" style={{color : "#fff"}}>Write Review</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="subject" name="review" placeholder="Write something.." cols={100} style={{height:"560px", backgroundColor: "whitesmoke"}}></textarea>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <input type="submit" value="Submit"></input>
+                </div>
+            </form>
+        </div>
     )
 }

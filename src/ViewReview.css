@@ -1,3 +1,10 @@
 .ViewReview{
     color:#fff;
 }
+
+.review{
+    background-color: #ccc;
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    margin-right: 10px
+}
