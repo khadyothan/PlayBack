@@ -3,6 +3,7 @@ import "./App.css"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Header from './Header'
 import MovieList from './MovieList'
+import Movie from './Movie'
 import requests from './requests'
 import Banner from './Banner'	
 import {useState} from 'react'
@@ -11,8 +12,11 @@ import Login from './Login'
 import { useEffect } from 'react'
 import { useStateValue } from './StateProvider'
 import { auth } from './firebase'
+import PostReview from './PostReview'
+import ViewReview from './ViewReview'
 
 function App() {
+
   
 	const [{ basket }, dispatch] = useStateValue();
 
@@ -44,7 +48,17 @@ function App() {
 	return (
 		<Router className="App">
 			<div className="App">	
+				<Header searchValue={searchValue} setSearchValue={setSearchValue}/>
 				<Switch>
+					<Route path="/movie/post_review/:movieId">
+						<PostReview />
+					</Route>
+					<Route path="/movie/view_review/:movieId">
+						<ViewReview />
+					</Route>
+					<Route path={`/movie/:movieId`}>
+						<Movie />
+					</Route>
 					<Route path = "/Favourites">
 						<h1>Your Favourites</h1>
 					</Route>
@@ -52,7 +66,6 @@ function App() {
 						<Login></Login>
 					</Route>
 					<Route path = "/">	
-						<Header searchValue={searchValue} setSearchValue={setSearchValue}/>
 						{searchValue ? 
 							<SearchResult searchValue = {searchValue}/> :
 							<>

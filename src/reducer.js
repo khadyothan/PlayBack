@@ -1,45 +1,45 @@
 export const initialState = {
-    basket: [],
+    favouirites: [],
     user: null
   };
   
   // Selector
-  export const getBasketTotal = (basket) => 
-    basket?.reduce((amount, item) => item.price + amount, 0);
+  export const getfavouiritesTotal = (favouirites) => 
+    favouirites?.reduce((amount, item) => item.price + amount, 0);
   
   const reducer = (state, action) => {
     console.log(action);
     switch (action.type) {
-      case "ADD_TO_BASKET":
+      case "ADD_TO_favouirites":
         return {
           ...state,
-          basket: [...state.basket, action.item],
+          favouirites: [...state.favouirites, action.item],
         };
       
-      case 'EMPTY_BASKET':
+      case 'EMPTY_favouirites':
         return {
           ...state,
-          basket: []
+          favouirites: []
         }
 
-      case "REMOVE_FROM_BASKET":
-        const index = state.basket.findIndex(
-          (basketItem) => basketItem.id === action.id
+      case "REMOVE_FROM_favouirites":
+        const index = state.favouirites.findIndex(
+          (favouiritesItem) => favouiritesItem.id === action.id
         );
-        let newBasket = [...state.basket];
+        let newfavouirites = [...state.favouirites];
 
         if (index >= 0) {
-          newBasket.splice(index, 1);
+          newfavouirites.splice(index, 1);
 
         } else {
           console.warn(
-            `Cant remove product (id: ${action.id}) as its not in basket!`
+            `Cant remove product (id: ${action.id}) as its not in favouirites!`
           )
         }
 
         return {
           ...state,
-          basket: newBasket
+          favouirites: newfavouirites
         }
       
       case "SET_USER":

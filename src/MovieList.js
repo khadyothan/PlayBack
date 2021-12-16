@@ -3,6 +3,7 @@ import {useState,useEffect} from 'react'
 import axios from './axios';
 import "./MovieList.css";
 import {bad_words} from './badwords';
+import { Link } from 'react-router-dom';
 
 function MovieList({title,fetchUrl}) {
     const [movies,setMovies] = useState([]);
@@ -22,19 +23,18 @@ function MovieList({title,fetchUrl}) {
         fetchData();
     },[fetchUrl])
 
-    
-
     return (
         <div className="row">
             <h2>{title}</h2>
             <div className="row__posters">
                 {movies.map(movie => (
-                        <img className="row__poster"
+                    <Link to={`/movie/${movie.id}`} className='row__poster'>
+                        <img 
                             key={movie.id}
                             src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                            alt={movie.original_title}
-                            onClick={() => {}}
+                            alt={movie.original_title}         
                         />
+                    </Link>
                 ))}
             </div>
         </div>

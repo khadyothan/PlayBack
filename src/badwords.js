@@ -1,1 +1,1 @@
-export const bad_words = ["porn", "donde", "XXX"]
+export const bad_words = ["porn", "donde", "xxx", "sex", "gabr"]
