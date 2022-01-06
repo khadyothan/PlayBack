@@ -13,7 +13,7 @@ export default function Movie() {
   const [fav, setFav] = useState([]);
   const [flag,setFlag] = useState(false);
 
-  
+
 
   useEffect(() => {
     async function fetchData() {
@@ -97,7 +97,7 @@ export default function Movie() {
       <div className="Comments">
         <Link to={`/movie/view_review/${movie.id}`} className='comment__button'><h2>View Reviews</h2></Link>
         <Link to={`/movie/post_review/${movie.id}`} className='comment__button'><h2>Post a Review</h2></Link>
-        {fav.length > 0 ? <button onClick={remFav} className='comment__button'>Remove from Favourites</button> :
+        {fav.length ? <button onClick={remFav} className='comment__button'>Remove from Favourites</button> :
        <button onClick={addFav} className='comment__button'>Add to Favourites</button>} 
       </div>
     </div>
