@@ -1,11 +1,11 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from './axios'
 import requests from './requests'
 import "./banner.css"
 
 function Banner() {
     const [movie, setMovie] = useState([])
-    
+
     useEffect(() => {
         async function fetchData() {
             const request = await axios.get(requests.fetchTrending)
@@ -15,8 +15,8 @@ function Banner() {
         }
         fetchData()
     }, [])
-    
-    console.log(movie)
+
+    // console.log(movie)
 
     return (
         <header
@@ -24,9 +24,9 @@ function Banner() {
             style={{
                 backgroundSize: 'cover',
                 backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
-                backgroundPosition: 'center center'
+                backgroundPosition: 'auto'
             }}
-            >
+        >
             <div className='banner_contents'>
                 <h1 className="banner_title">
                     {movie?.title || movie?.name || movie?.original_name}

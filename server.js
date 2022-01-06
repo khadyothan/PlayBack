@@ -17,6 +17,12 @@ const reviewSchema = new mongoose.Schema({
 });
 const Review = mongoose.model('Review', reviewSchema);
 
+const favouriteSchema = new mongoose.Schema({
+    movieId: String,
+    username: String
+});
+const Favourite = mongoose.model('Favourite', favouriteSchema);
+
 app.post('/movie/:id', async (req, res) => {
     const movieId = req.params.id
     const { username, review } = req.body
@@ -33,9 +39,42 @@ app.get('/movie/:id', async (req, res) => {
     return res.json(filteredReviews)
 })
 
-app.get("/", (req, res) => {
-    res.send("10");
+app.get('/favourites/:id', async (req, res) => {
+    // console.log(req.params,req.query)
+    const reviews = await Favourite.find({
+        movieId: req.params.id,
+        username: req.query.username
+    })
+    return res.json(reviews)
 })
+
+app.post('/favourites/:id', async (req, res) => {
+    const movieId = req.params.id
+    const username = req.body.username
+    // console.log(username,movieId)
+    let fav = new Favourite({username, movieId})
+    // console.log(fav)
+    fav = await fav.save()  
+    res.send(req.body) 
+})
+
+app.delete('/favourites/:id', async (req, res) => {
+    const movieId = req.params.id
+    // console.log(req)
+    const username = req.query.username
+    console.log(username,movieId,"del")
+    let fav = await Favourite.findOneAndDelete({username, movieId})
+    // console.log(fav)
+    res.send(req.body)
+})
+
+app.get('/favourites', async (req, res) => {
+    const reviews = await Favourite.find({
+        username: req.query.username
+    })
+    return res.json(reviews)
+})
+
 
 app.listen(4000, ()=>{
     console.log("Server is running on port 4000");

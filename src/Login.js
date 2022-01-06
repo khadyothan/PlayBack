@@ -40,7 +40,7 @@ function Login() {
                 <Link to='/'>
                     <img
                         className="login__logo"
-                        src='https://i.ytimg.com/vi/StYmwk1xfH0/maxresdefault.jpg' 
+                        src='https://i.ytimg.com/vi/StYmwk1xfH0/maxresdefault.jpg'
                     />
                 </Link>
                 <h1>Sign-in</h1>

@@ -1,32 +1,32 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "./Header.css"
 import SearchIcon from '@mui/icons-material/Search';
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 
-function Header( {searchValue, setSearchValue}) {
+function Header({ searchValue, setSearchValue }) {
 
     const [{ basket, user }, dispatch] = useStateValue();
 
     const handleAuthenticaton = () => {
         if (user) {
-          auth.signOut();
+            auth.signOut();
         }
-      }
+    }
 
     return (
         <nav className="header">
             <Link to="/">
                 <img
                     className="header__logo"
-                    src = "https://i.ytimg.com/vi/StYmwk1xfH0/maxresdefault.jpg"
-                    alt = "logo"
+                    src="https://i.ytimg.com/vi/StYmwk1xfH0/maxresdefault.jpg"
+                    alt="logo"
                 />
             </Link>
             <div className="header__search">
-                <input type="text"  className="header__searchInput" placeholder="Search" onChange={(event) => setSearchValue(event.target.value)}/>
-                <SearchIcon className="header__searchIcon"/>
+                <input type="text" className="header__searchInput" placeholder="Search" onChange={(event) => setSearchValue(event.target.value)} />
+                <SearchIcon className="header__searchIcon" />
             </div>
             <div className="header__nav">
                 <Link to="/Favourites">

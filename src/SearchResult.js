@@ -1,23 +1,23 @@
 import React from 'react'
 import "./SearchResult.css";
-import {Link} from 'react-router-dom';
-import { useState,useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-function SearchResult({searchValue}) {
+function SearchResult({ searchValue }) {
     const [movies, setMovies] = useState([]);
     const getMovieRequest = async (searchValue) => {
-		const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=8cb726cc`;
-		const response = await fetch(url);
-		const responseJson = await response.json();
+        const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=8cb726cc`;
+        const response = await fetch(url);
+        const responseJson = await response.json();
 
-		if (responseJson.Search) {
-			setMovies(responseJson.Search);
-		}
-	};
+        if (responseJson.Search) {
+            setMovies(responseJson.Search);
+        }
+    };
 
     useEffect(() => {
-		getMovieRequest(searchValue);
-	}, [searchValue]);
+        getMovieRequest(searchValue);
+    }, [searchValue]);
 
     console.log(movies);
     return (
@@ -25,14 +25,14 @@ function SearchResult({searchValue}) {
             <div className="row__posters">
                 {movies.map(movie => (
                     <>
-                        {movie.Poster!=="N/A"? 
+                        {movie.Poster !== "N/A" ?
                             <Link to={`/movie/${movie.imdbID}`} className='row__poster'>
                                 <img className="row__poster"
                                     src={movie.Poster}
                                 />
                             </Link>
-                                : 
-                        null}
+                            :
+                            null}
                     </>
                 ))}
             </div>
