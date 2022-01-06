@@ -72,7 +72,9 @@ app.get('/favourites', async (req, res) => {
     const reviews = await Favourite.find({
         username: req.query.username
     })
-    return res.json(reviews)
+    const ids = reviews.map((r) => r?.movieId)
+    console.log(ids)
+    return res.json(ids)
 })
 
 
