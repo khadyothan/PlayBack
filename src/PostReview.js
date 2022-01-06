@@ -24,18 +24,11 @@ export default function PostReview() {
     return (
         <div className="container">
             <form method="POST" onSubmit={addReview}>
-                <div class="row">
-                    <div class="col-25">
-                        <label for="subject" style={{ color: "#fff" }}>Write Review</label>
-                    </div>
-                    <div class="col-75">
-                        <textarea id="subject" name="review" placeholder="Write something.." cols={100} style={{ height: "560px", backgroundColor: "whitesmoke" }}></textarea>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
+                    <label for="subject" style={{ color: "#fff", fontSize: "30px" }}>Write Review</label>
+                    <br />
+                    <textarea id="subject" name="review" placeholder="Write your review.." cols={60} style={{ height: "560px", backgroundColor: "whitesmoke" }}></textarea>
+                    <br />
                     <input type="submit" value="Submit"></input>
-                </div>
             </form>
         </div>
     )
