@@ -6,5 +6,21 @@
     background-color: #ccc;
     padding: 20px;
     color: rgb(0, 0, 0);
-    margin-right: 10px
+    border-radius: 5px;
+    margin: 20px;
+    margin-bottom: 5px;
+    width: 90%;
+    box-shadow: 0 5px 10px 2px white;
+
+
+}
+
+.review-head {
+    font-size: 40px;
+}
+
+.review-text {
+    font-size: 25px;
+    padding-left: 10px;
+    font-style: italic;
 }

@@ -18,9 +18,9 @@ function ViewReview() {
             <ul>
                 {reviews.map(r =>
                     <div className="review">
-                        <h2>{r.username || 'guest'}</h2>
+                        <h2 className='review-head'>User: {r.username || 'guest'}</h2>
                         <br />
-                        <p>{r.review}</p>
+                        <p className='review-text'>"{r.review}"</p>
                         <br />
                     </div>)}
             </ul>
