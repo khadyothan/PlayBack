@@ -34,6 +34,11 @@ function Header({ searchValue, setSearchValue }) {
                         <span className='header__optionLine2'>Favourites</span>
                     </div>
                 </Link>
+                <Link to="/WatchLater">
+                    <div className="header__favourites">
+                        <span className='header__optionLine2'>Watch Later</span>
+                    </div>
+                </Link>
                 <Link to="/Login" className="header__link">
                     <Link to={!user && '/login'} style={{ textDecoration: "none", color: "white" }}>
                         <div onClick={handleAuthenticaton} className="header__option">

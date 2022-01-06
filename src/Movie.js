@@ -12,7 +12,7 @@ export default function Movie() {
   const [{ x, user }, y] = useStateValue();
   const [fav, setFav] = useState([]);
   const [flag,setFlag] = useState(false);
-
+  const [watchlater, setwatchlater] = useState([]);
 
 
   useEffect(() => {
@@ -29,6 +29,14 @@ export default function Movie() {
     // console.log(`/favourites/${movieId}?username=${user?.email}`);
     axios.get(`http://localhost:4000/favourites/${movieId}?username=${user?.email}`).then(res => {
       setFav(res.data);
+      // console.log(res.data);
+    })
+  }, [flag]);
+
+  useEffect(() => {
+    // console.log(`/favourites/${movieId}?username=${user?.email}`);
+    axios.get(`http://localhost:4000/watchlater/${movieId}?username=${user?.email}`).then(res => {
+      setwatchlater(res.data);
       // console.log(res.data);
     })
   }, [flag]);
@@ -68,7 +76,41 @@ export default function Movie() {
       });
     setFlag(!flag);
   }  
+  function addWat(e) {
+    e.preventDefault();
+    if (!user?.email) {
+      alert("Please login first")
+      return
+    }
+    // console.log(user.email)
+    axios.post('http://localhost:4000/watchlater/' + movieId, {
+      username: user.email
+    })
+      .then(function (response) {
+        // console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setFlag(!flag);
+  }  
 
+  function remWat(e) {
+    e.preventDefault();
+    if (!user?.email) {
+      alert("Please login first")
+      return
+    }
+    // console.log(user.email)
+    axios.delete('http://localhost:4000/watchlater/' + movieId + '?username=' + user?.email)
+      .then(function (response) {
+        // console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setFlag(!flag);
+  }  
   return (
     <div>
       <header
@@ -99,6 +141,8 @@ export default function Movie() {
         <Link to={`/movie/post_review/${movie.id}`} className='comment__button'><h2>Post a Review</h2></Link>
         {fav.length ? <button onClick={remFav} className='comment__button'>Remove from Favourites</button> :
        <button onClick={addFav} className='comment__button'>Add to Favourites</button>} 
+       {watchlater.length ? <button onClick={remWat} className='comment__button'>Remove from WatchLater</button> :
+       <button onClick={addWat} className='comment__button'>WatchLater</button>}
       </div>
     </div>
   )

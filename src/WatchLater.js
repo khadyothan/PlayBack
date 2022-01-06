@@ -5,24 +5,23 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import instance from './axios'
 
-function Favourites() {
-    const [favourites, setFavourite] = useState();
+function WatchLater() {
+    const [watchlater, setwatchlater] = useState();
     const [{ x, user }, y] = useStateValue();
     // const [movies, setMovie] = useState([]);
     const [movies, setmovies] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:4000/favourites?username=" + user?.email)
+        axios.get("http://localhost:4000/watchlater?username=" + user?.email)
         .then(res => {
-            setFavourite(res.data);
+            setwatchlater(res.data);
         })
     }, [])
     
-    // console.log(favourites);
-
-
+    // console.log(watchlater);
+    
     useEffect(() => {
-        if(favourites){
-            for (let fav of favourites) {
+        if(watchlater){
+            for (let fav of watchlater) {
                 // console.log(fav);
                 async function fetchData() {
                     const request = await instance.get('/movie/' + fav + '?api_key=2248ff0df2a94f4b7e522e5e43ea6abf');
@@ -32,16 +31,16 @@ function Favourites() {
                 fetchData();
             }   
         }
-    }, [favourites])
+    }, [watchlater])
         
     
-    console.log(movies);
+    // console.log(movies);
 
     // if (!user?.email) {
     //     alert("Please login first")
     //     return
     // }
-    // console.log(favourites);
+    // console.log(watchlater);
     return (
         <div className="search__list">
             <div>
@@ -59,4 +58,4 @@ function Favourites() {
     )
 }
 
-export default Favourites
+export default WatchLater

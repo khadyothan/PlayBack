@@ -15,7 +15,7 @@ import { auth } from './firebase'
 import PostReview from './PostReview'
 import ViewReview from './ViewReview'
 import Favourites from './Favourites'
-
+import WatchLater from './WatchLater'
 function App() {
 
 
@@ -62,6 +62,9 @@ function App() {
 					</Route>
 					<Route path="/Favourites">
 						<Favourites />
+					</Route>
+					<Route path="/WatchLater">
+						<WatchLater />
 					</Route>
 					<Route path="/Login">
 						<Login></Login>

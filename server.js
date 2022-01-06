@@ -23,6 +23,12 @@ const favouriteSchema = new mongoose.Schema({
 });
 const Favourite = mongoose.model('Favourite', favouriteSchema);
 
+const watchlaterSchema = new mongoose.Schema({
+    movieId: String,
+    username: String
+});
+const WatchLater = mongoose.model('WatchLater', watchlaterSchema);
+
 app.post('/movie/:id', async (req, res) => {
     const movieId = req.params.id
     const { username, review } = req.body
@@ -76,6 +82,46 @@ app.get('/favourites', async (req, res) => {
     console.log(ids)
     return res.json(ids)
 })
+
+
+app.get('/watchlater/:id', async (req, res) => {
+    // console.log(req.params,req.query)
+    const reviews = await WatchLater.find({
+        movieId: req.params.id,
+        username: req.query.username
+    })
+    return res.json(reviews)
+})
+
+app.post('/watchlater/:id', async (req, res) => {
+    const movieId = req.params.id
+    const username = req.body.username
+    // console.log(username,movieId)
+    let fav = new WatchLater({username, movieId})
+    // console.log(fav)
+    fav = await fav.save()  
+    res.send(req.body) 
+})
+
+app.delete('/watchlater/:id', async (req, res) => {
+    const movieId = req.params.id
+    // console.log(req)
+    const username = req.query.username
+    console.log(username,movieId,"del")
+    let fav = await WatchLater.findOneAndDelete({username, movieId})
+    // console.log(fav)
+    res.send(req.body)
+})
+
+app.get('/watchlater', async (req, res) => {
+    const reviews = await WatchLater.find({
+        username: req.query.username
+    })
+    const ids = reviews.map((r) => r?.movieId)
+    console.log(ids)
+    return res.json(ids)
+})
+
 
 
 app.listen(4000, ()=>{
