@@ -11,7 +11,7 @@ export default function Movie() {
   const [movie, setMovie] = useState([]);
   const [{ x, user }, y] = useStateValue();
   const [fav, setFav] = useState([]);
-  const [flag,setFlag] = useState(false);
+  const [flag, setFlag] = useState(false);
   const [watchlater, setwatchlater] = useState([]);
 
 
@@ -21,7 +21,7 @@ export default function Movie() {
       setMovie(request.data);
     }
     fetchData();
-  }, [movieId])   
+  }, [movieId])
 
   // console.log(fav, "fav",flag,movieId);
 
@@ -58,7 +58,7 @@ export default function Movie() {
         console.log(error);
       });
     setFlag(!flag);
-  }  
+  }
 
   function remFav(e) {
     e.preventDefault();
@@ -75,7 +75,7 @@ export default function Movie() {
         console.log(error);
       });
     setFlag(!flag);
-  }  
+  }
   function addWat(e) {
     e.preventDefault();
     if (!user?.email) {
@@ -93,7 +93,7 @@ export default function Movie() {
         console.log(error);
       });
     setFlag(!flag);
-  }  
+  }
 
   function remWat(e) {
     e.preventDefault();
@@ -110,7 +110,7 @@ export default function Movie() {
         console.log(error);
       });
     setFlag(!flag);
-  }  
+  }
   return (
     <div>
       <header
@@ -126,8 +126,26 @@ export default function Movie() {
             {movie?.title || movie?.name || movie?.original_name}
           </h1>
           <div>
-            <button className='banner_button'>Play</button>
-            <button className='banner_button'>My List</button>
+            {movie?.title ?
+              <Link to={`/Playtube/${movie.title}`} >
+                <button className='banner_button'>Play</button>
+              </Link>
+              :
+              movie?.name ?
+                <Link to={`/Playtube/${movie.name}`} >
+                  <button className='banner_button'>Play</button>
+                </Link>
+                :
+                movie?.original_name ?
+                  <Link to={`/Playtube/${movie.original_name}`} >
+                    <button className='banner_button'>Play</button>
+                  </Link>
+                  :
+                  <button className='banner_button'>Play</button>
+            }
+            <Link to="/Favourites" >
+              <button className='banner_button'>My List</button>
+            </Link>
           </div>
           <p className='banner_desc'>
             {movie?.overview}
@@ -140,9 +158,9 @@ export default function Movie() {
         <Link to={`/movie/view_review/${movie.id}`} className='comment__button'><h2>View Reviews</h2></Link>
         <Link to={`/movie/post_review/${movie.id}`} className='comment__button'><h2>Post a Review</h2></Link>
         {fav.length ? <button onClick={remFav} className='comment__button'>Remove from Favourites</button> :
-       <button onClick={addFav} className='comment__button'>Add to Favourites</button>} 
-       {watchlater.length ? <button onClick={remWat} className='comment__button'>Remove from WatchLater</button> :
-       <button onClick={addWat} className='comment__button'>WatchLater</button>}
+          <button onClick={addFav} className='comment__button'>Add to Favourites</button>}
+        {watchlater.length ? <button onClick={remWat} className='comment__button'>Remove from WatchLater</button> :
+          <button onClick={addWat} className='comment__button'>WatchLater</button>}
       </div>
     </div>
   )

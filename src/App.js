@@ -16,6 +16,8 @@ import PostReview from './PostReview'
 import ViewReview from './ViewReview'
 import Favourites from './Favourites'
 import WatchLater from './WatchLater'
+import Playtube from './Playtube'
+
 function App() {
 
 
@@ -49,27 +51,37 @@ function App() {
 	return (
 		<Router className="App">
 			<div className="App">
-				<Header searchValue={searchValue} setSearchValue={setSearchValue} />
+				
 				<Switch>
 					<Route path="/movie/post_review/:movieId">
+						<Header searchValue={searchValue} setSearchValue={setSearchValue} />
 						<PostReview />
 					</Route>
 					<Route path="/movie/view_review/:movieId">
+						<Header searchValue={searchValue} setSearchValue={setSearchValue} />
 						<ViewReview />
 					</Route>
 					<Route path={`/movie/:movieId`}>
+						<Header searchValue={searchValue} setSearchValue={setSearchValue} />
 						<Movie />
 					</Route>
 					<Route path="/Favourites">
+						<Header searchValue={searchValue} setSearchValue={setSearchValue} />
 						<Favourites />
 					</Route>
 					<Route path="/WatchLater">
+						<Header searchValue={searchValue} setSearchValue={setSearchValue} />
 						<WatchLater />
+					</Route>
+					<Route path="/Playtube/:movieTitle">
+						<Header searchValue={searchValue} setSearchValue={setSearchValue} />
+						<Playtube />
 					</Route>
 					<Route path="/Login">
 						<Login></Login>
 					</Route>
 					<Route path="/">
+						<Header searchValue={searchValue} setSearchValue={setSearchValue} />
 						{searchValue ?
 							<SearchResult searchValue={searchValue} /> :
 							<>

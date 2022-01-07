@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from './axios'
 import requests from './requests'
 import "./banner.css"
+import { Link } from 'react-router-dom'
 
 function Banner() {
     const [movie, setMovie] = useState([])
@@ -32,8 +33,26 @@ function Banner() {
                     {movie?.title || movie?.name || movie?.original_name}
                 </h1>
                 <div>
-                    <button className='banner_button'>Play</button>
-                    <button className='banner_button'>My List</button>
+                    {movie?.title ?
+                        <Link to={`/Playtube/${movie.title}`} >
+                            <button className='banner_button'>Play</button>
+                        </Link>
+                        :
+                        movie?.name ?
+                            <Link to={`/Playtube/${movie.name}`} >
+                                <button className='banner_button'>Play</button>
+                            </Link>
+                            :
+                            movie?.original_name ?
+                                <Link to={`/Playtube/${movie.original_name}`} >
+                                    <button className='banner_button'>Play</button>
+                                </Link>
+                                :
+                                <button className='banner_button'>Play</button>
+                    }
+                    <Link to="/Favourites" >
+                        <button className='banner_button'>My List</button>
+                    </Link>
                 </div>
                 <p className='banner_desc'>
                     {movie?.overview}
