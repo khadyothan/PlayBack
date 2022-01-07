@@ -1,13 +1,13 @@
 .Comments{
     display: flex;
-    margin-top: 6rem;
-    margin-left: 27rem;
+    margin-top: 5rem;
+    margin-left: 25rem;
     padding-left: 10px;
 }
 
 .comment__button{
     text-decoration: none;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     cursor: pointer;
     color: white;
     outline: none;

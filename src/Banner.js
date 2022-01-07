@@ -50,9 +50,23 @@ function Banner() {
                                 :
                                 <button className='banner_button'>Play</button>
                     }
-                    <Link to="/Favourites" >
-                        <button className='banner_button'>My List</button>
-                    </Link>
+                    {movie?.title ?
+                        <Link to={`/News/${movie.title}`} >
+                            <button className='banner_button'>News</button>
+                        </Link>
+                        :
+                        movie?.name ?
+                            <Link to={`/News/${movie.name}`} >
+                                <button className='banner_button'>News</button>
+                            </Link>
+                            :
+                            movie?.original_name ?
+                                <Link to={`/News/${movie.original_name}`} >
+                                    <button className='banner_button'>News</button>
+                                </Link>
+                                :
+                                <button className='banner_button'>News</button>
+                    }
                 </div>
                 <p className='banner_desc'>
                     {movie?.overview}
