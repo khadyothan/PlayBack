@@ -14,7 +14,7 @@ function Header({ searchValue, setSearchValue }) {
             auth.signOut();
         }
     }
-
+    
     return (
         <nav className="header">
             <Link to="/">

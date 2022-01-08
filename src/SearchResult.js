@@ -19,6 +19,8 @@ function SearchResult({ searchValue }) {
         getMovieRequest(searchValue);
     }, [searchValue]);
 
+    
+
     console.log(movies);
     return (
         <div className="search__list">
