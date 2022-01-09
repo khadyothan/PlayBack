@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use((require('cors'))());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json())
 
-mongoose.connect("mongodb://localhost:27017/fsdproject", {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {useNewUrlParser: true});
 const reviewSchema = new mongoose.Schema({
     review: String,
     movieId: String,
@@ -124,6 +125,6 @@ app.get('/watchlater', async (req, res) => {
 
 
 
-app.listen(4000, ()=>{
+app.listen(process.env.PORT || 4000, ()=>{
     console.log("Server is running on port 4000");
 })

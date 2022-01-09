@@ -8,7 +8,7 @@ import "./blogs.css";
 
 const News = () => {
     const { movieTitle } = useParams();
-    const filter = movieTitle.split(":").join("").split("-").join(" ");
+    const filter = movieTitle.split(":").join("").split("-").join(" ").split("'").join();
     // console.log(filter);
     
     const blog_url = `https://gnews.io/api/v4/search?q=${filter}&token=74da443369bd202a1f3146a275d761fc`;
