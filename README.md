@@ -1,7 +1,7 @@
 # FSD 2 Project
 
-## PlayBack - OTT Application with discussion forum
-PlayBack is an OTT Application with talk gathering where you'll examine by including an audit to numerous motion pictures. You'll be able to include your top pick motion pictures, additionally observe their related talks and trailers.
+## PlayBack - A Film Community website 
+PlayBack is a Film Community Application with talk gathering where you'll examine by including an audit to numerous motion pictures. You'll be able to include your top pick motion pictures, additionally observe their related talks/news and trailers.
 
 ## Group No - 22
 
