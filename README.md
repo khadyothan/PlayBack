@@ -6,11 +6,11 @@ PlayBack is a Film Community Application with talk gathering where you'll examin
 ## Group No - 22
 
 ## Team Members
-Khadyothan D        :     S20190010040
-Navdeep K           :     S20190010099
-Sai Bhargava K      :     S20190010083
-Chandra Kiran G     :     S20190010029
-Gireesh Kumar CH    :     S20190010036
+- Khadyothan D        :     S20190010040
+- Navdeep K           :     S20190010099
+- Sai Bhargava K      :     S20190010083
+- Chandra Kiran G     :     S20190010029
+- Gireesh Kumar CH    :     S20190010036
 
 
 ## Tech Stack
